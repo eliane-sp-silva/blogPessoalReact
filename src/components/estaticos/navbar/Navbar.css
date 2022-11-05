@@ -1,0 +1,8 @@
+.text-decorator-none{
+  text-decoration: none ;
+}
+/* !important */
+.cursor{
+  cursor: pointer;
+  color: white;
+}
