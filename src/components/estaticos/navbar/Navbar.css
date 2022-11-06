@@ -4,5 +4,5 @@
 /* !important */
 .cursor{
   cursor: pointer;
-  color: white;
+  color: white !important;
 }
