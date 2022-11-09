@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import useLocalStorage from 'react-use-localstorage';
 import UserLogin from '../../models/UserLogin';
 import { api } from '../../services/Service';
+import './Login.css'
 
 function Login() {
 
@@ -47,8 +48,6 @@ function Login() {
       alert('Dados do usuário inconsistentes. Erro ao logar!');
     }
   }
-
-
 
   return (
     <Grid container direction='row' justifyContent='center' alignItems='center'>
