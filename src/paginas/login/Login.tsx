@@ -4,7 +4,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import useLocalStorage from 'react-use-localstorage';
 import UserLogin from '../../models/UserLogin';
-import { api } from '../../services/Service';
+import { api, login } from '../../services/Service';
 import './Login.css'
 
 function Login() {
@@ -40,10 +40,10 @@ function Login() {
   async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
-      const resposta = await api.post(`/usuarios/logar`, userLogin)
-      setToken(resposta.data.token)
+      await login(`/usuarios/logar`, userLogin, setToken)
 
       alert('Usuário logado com sucesso!');
+      
     } catch (error) {
       alert('Dados do usuário inconsistentes. Erro ao logar!');
     }
@@ -58,11 +58,9 @@ function Login() {
             <TextField value={userLogin.usuario} onChange={(e:ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='usuario' label='usuário' variant='outlined' name='usuario' margin='normal' fullWidth />
             <TextField value={userLogin.senha} onChange={(e:ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth />
             <Box marginTop={2} textAlign='center'>
-              <Link to='/home' className='text-decorator-none'>
                 <Button type='submit' variant='contained' color='primary'>
                   Logar
                 </Button>
-              </Link>
             </Box>
           </form>
           <Box display='flex' justifyContent='center' marginTop={2}>
