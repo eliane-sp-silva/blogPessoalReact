@@ -5,11 +5,20 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { Box } from '@mui/material'
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 function Footer() {
-  return (
-    <>
-    <Grid container direction="row" justifyContent="center" alignItems="center">
+  let navigate = useNavigate();
+  const dispatch = useDispatch();
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
+  let footerComponent;
+
+  if (token != '') {
+    footerComponent = <Grid container direction="row" justifyContent="center" alignItems="center">
       <Grid alignItems="center" item xs={12}>
         <Box className='box1' >
           <Box paddingTop={1} display="flex" alignItems="center" justifyContent="center">
@@ -23,7 +32,7 @@ function Footer() {
               <InstagramIcon className='redes' />
             </a>
             <a href="https://github.com/eliane-sp-silva" target="_blank" rel="noreferrer">
-              <GitHubIcon className='redes'/>
+              <GitHubIcon className='redes' />
             </a>
           </Box>
         </Box>
@@ -32,13 +41,19 @@ function Footer() {
             <Typography variant="subtitle2" align="center" gutterBottom className='textos' >© 2022 Copyright:</Typography>
           </Box>
           <Box>
-            <a target="_blank" href="https://brasil.generation.org" rel="noreferrer">
+            <a target="_blank" href="https://brasil.generation.org" rel="noreferrer"
+              className='text-decorator-none'>
               <Typography variant="subtitle2" gutterBottom className='textos' align="center">brasil.generation.org</Typography>
             </a>
           </Box>
         </Box>
       </Grid>
     </Grid>
+  }
+
+  return (
+    <>
+      {footerComponent}
 
     </>
   )

@@ -5,6 +5,7 @@ import './CadastroUsuario.css';
 import { Box } from '@mui/material';
 import User from '../../models/User';
 import { cadastroUsuario } from '../../services/Service';
+import { toast } from 'react-toastify';
 
 function CadastroUsuario() {
 
@@ -53,12 +54,40 @@ function CadastroUsuario() {
     if (confirmarSenha == user.senha) {
       try {
         await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult); //mesmo caminho do usuario-controller
-        alert('Usuário cadastrado com sucesso')
+        toast.success('Usuário cadastrado com sucesso', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined,
+      });
       } catch (error) {
-        alert('Falha interna ao cadastrar!');
+        toast.error('Falha interna ao cadastrar!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined,
+      });
       }
     } else {
-      alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
+       toast.error('Dados inconsistentes. Favor verificar as informações de cadastro.', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined,
+      });
+      
     }
   }
 

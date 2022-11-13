@@ -1,6 +1,6 @@
 :root{
   --cinza: #D0DFE6;
-  --lilas: #bc33a3e8;
+  --lilas: #bc34a3b3;
   --azulClaro: #1794A5;
   --azulEscuro: #032030;
   --branco: #f2f2f2;
@@ -23,4 +23,7 @@
 
 .textos{
  color: white;
+}
+.text-decorator-none{
+  text-decoration: none ;
 }
