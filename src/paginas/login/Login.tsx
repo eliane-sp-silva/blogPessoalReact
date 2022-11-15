@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import UserLogin from '../../models/UserLogin';
-import { api, login } from '../../services/Service';
+import { login } from '../../services/Service';
 import { addToken } from '../../store/tokens/actions';
 import './Login.css'
 

@@ -49,22 +49,25 @@ function ListaPostagem() {
 
   return (
     <>
+     {posts.length === 0 && <span className="loader"></span>}
       {posts.map(post => (
         <Box m={2} >
           <Card variant="outlined">
             <CardContent>
-              <Typography color="textSecondary" gutterBottom>
+              {/* <Typography color="textSecondary" gutterBottom>
                 Postagens
-              </Typography>
+              </Typography> */}
               <Typography variant="h5" component="h2">
               {post.titulo}
               </Typography>
               <Typography variant="body2" component="p">
               {post.texto}
               </Typography>
-              {/* <Typography variant="body2" component="p">
-              {post.data}
-              </Typography> */}
+              <Typography variant="body2" component="p">
+              Postado em: {new Date(Date.parse(post.data)).toLocaleDateString()} <br />
+              {/* Mostar data e hora: {new Date(Date.parse(postagem.data)).toLocaleString()} <br />
+              Mostrar apenas hora: {new Date(Date.parse(postagem.data)).toLocaleTimeString()} */}
+            </Typography>
               <Typography variant="body2" component="p">
               {post.tema?.descricao}
               </Typography>

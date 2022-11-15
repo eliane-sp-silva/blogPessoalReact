@@ -51,6 +51,7 @@ function ListaTema() {
 
   return (
     <>
+    {temas.length === 0 && <span className="loader"></span>}
     {temas.map( tema => (
       <Box m={2} >
         <Card variant="outlined">

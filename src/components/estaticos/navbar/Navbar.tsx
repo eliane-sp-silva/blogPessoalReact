@@ -1,6 +1,6 @@
 import './Navbar.css'
 import React from 'react'
-import { Typography, AppBar, Toolbar } from '@material-ui/core'
+import { Typography, AppBar, Toolbar, Grid } from '@material-ui/core'
 import { Box } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -34,8 +34,10 @@ function Navbar() {
   let navbarComponent;
 
   if (token != '') {
-    navbarComponent = <AppBar position="static">
+    navbarComponent = <AppBar className='cor-de-fundo' position="static">
       <Toolbar variant="dense">
+      <Grid container justifyContent="space-between">
+
         <Link to='/home'
           className='text-decorator-none' >
           <Box className='cursor' >
@@ -85,6 +87,7 @@ function Navbar() {
             </Box>
           </Link>
         </Box>
+      </Grid>
 
       </Toolbar>
     </AppBar>
@@ -92,7 +95,8 @@ function Navbar() {
 
   return (
     <>
-      {navbarComponent}
+      {navbarComponent} 
+      {/* só aparece se tiver token */}
     </>
   )
 }
